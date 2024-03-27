@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# Rabobank Customer Statement Processor
+The Rabobank Customer Statement Processor is a software designed to identify unsuccessful transaction entries. It supports two file formats for detecting failed records: CSV and XML. Upon processing, it generates an HTML report containing the identified failed records.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to setup for development
+- Install nodejs version *v20.12.0 (LTS)*. Nodejs can be downloaded [here](https://nodejs.org/en/download).
+- Install npm packages: ``npm run install``
 
-Currently, two official plugins are available:
+## How to run the application
+- To start the development server run this command: ``npm run dev``
+- For run test run this command: ``npm run test``
+- For running code check run this command: ``npm run lint``
+- For building and testing an build crun this command: ``npm run build && npm run preview``
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Project structure
+This project is initialized with vite. This is a build and develop tool for more information see: [vite](https://vitejs.dev/guide/)
