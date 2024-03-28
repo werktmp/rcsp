@@ -11,7 +11,7 @@ function Report() {
 
     const [csvFile, setCsvFile] = useState<string | undefined>(undefined);
     const [xmlFile, setXmlFile] = useState<string | undefined>(undefined);
-    const [transactionRecords, setTransactionRecords] = useState<ReportTransactionRecord[]>([]);
+    const [transactionRecords, setTransactionRecords] = useState<ReportTransactionRecord[] | null>(null);
 
     const [fileName, setFileName] = useState<string>("");
 
@@ -60,11 +60,9 @@ function Report() {
             fileReader.onload = () => {
                 const fileContent = fileReader.result as string;
                 if (file.type === FILE_TYPE_CSV) {
-                    console.log(fileContent)
                     setCsvFile(fileContent)
                     setFileName(file.name)
                 } else if (file.type === FILE_TYPE_XML) {
-                    console.log(fileContent)
                     setXmlFile(fileContent)
                     setFileName(file.name)
                 }
@@ -74,7 +72,7 @@ function Report() {
     }
 
     const resetState = () => {
-        setTransactionRecords([])
+        setTransactionRecords(null)
         setCsvFile(undefined)
         setXmlFile(undefined)
         setFileName("")
@@ -94,7 +92,7 @@ function Report() {
                         disabled={!(csvFile || xmlFile)}>Validate
                 </button>
             </form>
-            {transactionRecords.length > 0 ?
+            {transactionRecords && transactionRecords.length > 0 ?
                 <table>
                     <thead>
                     <tr>
@@ -115,6 +113,9 @@ function Report() {
                     }
                     </tbody>
                 </table>
+                : null}
+            {transactionRecords && transactionRecords.length === 0 ?
+                <span>All records are valid.</span>
                 : null}
         </>
     )

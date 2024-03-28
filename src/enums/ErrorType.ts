@@ -1,4 +1,4 @@
 export enum ErrorType {
-    DUPLICATE = "Dupicate error",
+    DUPLICATE = "Duplicate error",
     MUTATION = "Mutation error",
 }

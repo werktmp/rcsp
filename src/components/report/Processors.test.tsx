@@ -5,24 +5,24 @@ describe('validators', () => {
     it('processCSV should be returning list with transaction records', () => {
         //Given
         const csvFile: string = `Reference,Account Number,Description,Start Balance,Mutation,End Balance
-        111111,NL56RAB00000000000,Tickets form User,33.34,+5.55,38.89
-        222222,NL56RAB00000000000,Tickets form User,33.34,+5.55,38.89`;
+111111,NL56RAB00000000000,Tickets form User,94.9,+14.63,108.53
+222222,NL56RAB00000000000,Tickets form User,5429,-939,6368`;
 
         const transactionRecord1: TransactionRecord = {
             reference: 111111,
             accountNumber: "NL56RAB00000000000",
             description: "Tickets form User",
-            startBalance: 33.34,
-            mutation: +5.55,
-            endBalance: 38.89
+            startBalance: 94.9,
+            mutation: +14.63,
+            endBalance: 108.53
         }
         const transactionRecord2: TransactionRecord = {
             reference: 222222,
             accountNumber: "NL56RAB00000000000",
             description: "Tickets form User",
-            startBalance: 33.34,
-            mutation: +5.55,
-            endBalance: 38.89
+            startBalance: 5429,
+            mutation: -939,
+            endBalance: 6368
         }
         const transactionRecords: TransactionRecord[] = [transactionRecord1, transactionRecord2]
 
@@ -30,9 +30,8 @@ describe('validators', () => {
         const result = processCSV(csvFile);
         const expected = transactionRecords;
 
-        console.log(result)
-
         //Then
+        expect(result?.length).toEqual(2)
         expect(result).toEqual(expected)
     })
 
@@ -45,6 +44,7 @@ describe('validators', () => {
         const expected = null;
 
         //Then
+        expect(result).toEqual(null)
         expect(result).toEqual(expected)
     })
 
@@ -52,37 +52,37 @@ describe('validators', () => {
         //Given
         const xmlFile: string = `
         <records>
-          <record reference="111111">
-            <accountNumber>NL56RAB00000000000</accountNumber>
-            <description>Tickets form User</description>
-            <startBalance>33.34</startBalance>
-            <mutation>+5.55</mutation>
-            <endBalance>38.89</endBalance>
-          </record>
-          <record reference="222222">
-            <accountNumber>NL56RAB00000000000</accountNumber>
-            <description>Tickets form User</description>
-            <startBalance>33.34</startBalance>
-            <mutation>+5.55</mutation>
-            <endBalance>38.89</endBalance>
-          </record>
+            <record reference="111111">
+                <accountNumber>NL56RAB00000000000</accountNumber>
+                <description>Tickets form User</description>
+                <startBalance>94.9</startBalance>
+                <mutation>+14.63</mutation>
+                <endBalance>108.53</endBalance>
+            </record>
+            <record reference="222222">
+                <accountNumber>NL56RAB00000000000</accountNumber>
+                <description>Tickets form User</description>
+                <startBalance>5429</startBalance>
+                <mutation>-939</mutation>
+                <endBalance>6368</endBalance>
+            </record>
         </records>`;
 
         const transactionRecord1: TransactionRecord = {
             reference: 111111,
             accountNumber: "NL56RAB00000000000",
             description: "Tickets form User",
-            startBalance: 33.34,
-            mutation: +5.55,
-            endBalance: 38.89
+            startBalance: 94.9,
+            mutation: +14.63,
+            endBalance: 108.53
         }
         const transactionRecord2: TransactionRecord = {
             reference: 222222,
             accountNumber: "NL56RAB00000000000",
             description: "Tickets form User",
-            startBalance: 33.34,
-            mutation: +5.55,
-            endBalance: 38.89
+            startBalance: 5429,
+            mutation: -939,
+            endBalance: 6368
         }
         const transactionRecords: TransactionRecord[] = [transactionRecord1, transactionRecord2]
 
@@ -90,9 +90,8 @@ describe('validators', () => {
         const result = processXML(xmlFile);
         const expected = transactionRecords;
 
-        console.log(result)
-
         //Then
+        expect(result?.length).toEqual(2)
         expect(result).toEqual(expected)
     })
 
@@ -105,6 +104,7 @@ describe('validators', () => {
         const expected = null;
 
         //Then
+        expect(result).toEqual(null)
         expect(result).toEqual(expected)
     })
 
